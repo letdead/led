@@ -1,0 +1,124 @@
+.human-size-comparison {
+  padding: 20px;
+  background: var(--color-bg);
+  border-radius: 12px;
+  border: 1px solid var(--color-border);
+  margin-top: 20px;
+}
+
+.comparison-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 16px;
+}
+
+.comparison-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.comparison-visual {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.comparison-label {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.comparison-bar-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.human-icon {
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.comparison-bar {
+  flex: 1;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.size-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-accent), var(--color-accent-hover));
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  transition: width 0.3s ease;
+  position: relative;
+  min-width: 60px;
+}
+
+.length-bar {
+  animation: slideIn 0.5s ease;
+}
+
+.breadth-bar {
+  animation: slideIn 0.5s ease 0.2s both;
+}
+
+.size-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+  white-space: nowrap;
+}
+
+.comparison-text {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  padding-left: 36px;
+}
+
+.comparison-note {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--color-border);
+  font-size: 11px;
+  color: var(--color-text-secondary);
+  font-style: italic;
+}
+
+@keyframes slideIn {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 568px) {
+  .human-size-comparison {
+    padding: 16px;
+  }
+  
+  .comparison-bar-container {
+    gap: 8px;
+  }
+  
+  .human-icon {
+    font-size: 20px;
+  }
+  
+  .size-label {
+    font-size: 12px;
+  }
+}

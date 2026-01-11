@@ -1,0 +1,137 @@
+.product-card {
+  background: var(--color-bg-secondary);
+  border-radius: 18px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+  position: relative;
+}
+
+.product-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--color-border);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.product-image-wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 100%;
+  overflow: hidden;
+  background: var(--color-bg);
+}
+
+.product-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.5s ease;
+}
+
+.product-card:hover .product-image {
+  transform: scale(1.1);
+}
+
+.product-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.product-card:hover .product-overlay {
+  opacity: 1;
+}
+
+.view-details-btn {
+  background: white;
+  color: black;
+  padding: 12px 24px;
+  border-radius: 22px;
+  font-size: 15px;
+  font-weight: 500;
+  font-family: var(--font-family);
+  border: none;
+  cursor: pointer;
+  transform: translateY(10px);
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover .view-details-btn {
+  transform: translateY(0);
+}
+
+.out-of-stock-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 2;
+}
+
+.product-info {
+  padding: 24px;
+}
+
+.product-category {
+  font-size: 12px;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.product-name {
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  margin-bottom: 6px;
+  color: var(--color-text);
+}
+
+.product-size {
+  font-size: 15px;
+  color: var(--color-text-secondary);
+  margin-bottom: 16px;
+}
+
+.product-price-row {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.product-price {
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--color-text);
+  letter-spacing: -0.5px;
+}
+
+@media (max-width: 768px) {
+  .product-info {
+    padding: 20px;
+  }
+  
+  .product-name {
+    font-size: 21px;
+  }
+  
+  .product-price {
+    font-size: 24px;
+  }
+}
+
