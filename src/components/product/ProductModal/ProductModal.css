@@ -254,6 +254,7 @@
   max-height: calc(100vh - 40px);
   overflow-y: auto;
   overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
 }
 
 .modal-body-customize {
@@ -268,6 +269,8 @@
   padding: 40px;
   overflow: visible;
   min-height: fit-content;
+  display: flex;
+  flex-direction: column;
 }
 
 .modal-right-section {
@@ -549,47 +552,254 @@
 @media (max-width: 1200px) {
   .modal-body-customize {
     grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .modal-left-section {
+    order: 1;
   }
   
   .modal-right-section {
+    order: 2;
     border-left: none;
     border-top: 1px solid var(--color-border);
     max-height: none;
   }
 }
 
-@media (max-width: 568px) {
+@media (max-width: 768px) {
   .modal-overlay {
-    padding: 10px;
-  }
-  
-  .modal-content {
-    max-height: calc(100vh - 20px);
-  }
-  
-  .modal-content-customize {
-    max-height: calc(100vh - 20px);
-  }
-  
-  .modal-image {
-    padding: 30px;
-  }
-  
-  .modal-info {
-    padding: 30px 20px;
+    padding: 0;
+    align-items: flex-end;
   }
 
-  .modal-left-section,
+  .modal-content {
+    max-width: 100%;
+    max-height: 95vh;
+    border-radius: 24px 24px 0 0;
+    margin-top: auto;
+  }
+
+  .modal-content-customize {
+    max-width: 100%;
+    max-height: 95vh;
+    border-radius: 24px 24px 0 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .modal-body-customize {
+    display: flex;
+    flex-direction: column;
+    overflow: visible;
+  }
+
+  .modal-close {
+    top: 16px;
+    right: 16px;
+    width: 36px;
+    height: 36px;
+  }
+
+  .modal-left-section {
+    padding: 24px 20px;
+    order: 1;
+    width: 100%;
+  }
+
   .modal-right-section {
     padding: 24px 20px;
+    order: 2;
+    width: 100%;
+    border-left: none;
+    border-top: 1px solid var(--color-border);
   }
 
-  .size-input-section {
-    grid-template-columns: 1fr;
+  .modal-product-header {
+    margin-bottom: 24px;
+  }
+
+  .modal-title {
+    font-size: 28px;
+  }
+
+  .modal-description {
+    font-size: 15px;
   }
 
   .section-title {
     font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .size-input-section {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .customization-section {
+    margin-top: 24px;
+  }
+
+  .components-section {
+    margin-top: 20px;
+    padding-top: 20px;
+  }
+
+  .preview-section {
+    margin-bottom: 20px;
+  }
+
+  .modal-product-image-container {
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  .calculation-section,
+  .pricing-section {
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+
+  .calculation-title,
+  .pricing-title {
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+
+  .calc-item,
+  .price-row {
+    padding: 6px 0;
+    font-size: 14px;
+  }
+
+  .price-amount.total-amount {
+    font-size: 20px;
+  }
+
+  .modal-actions-customize {
+    padding-top: 20px;
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 568px) {
+  .modal-overlay {
+    padding: 0;
+  }
+  
+  .modal-content {
+    max-height: 100vh;
+    border-radius: 0;
+  }
+  
+  .modal-content-customize {
+    max-height: 100vh;
+    border-radius: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .modal-body-customize {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .modal-close {
+    top: 12px;
+    right: 12px;
+    width: 32px;
+    height: 32px;
+  }
+
+  .modal-image {
+    padding: 20px;
+  }
+  
+  .modal-info {
+    padding: 24px 16px;
+  }
+
+  .modal-left-section {
+    padding: 20px 16px;
+    order: 1;
+  }
+
+  .modal-right-section {
+    padding: 20px 16px;
+    order: 2;
+  }
+
+  .modal-title {
+    font-size: 24px;
+  }
+
+  .modal-description {
+    font-size: 14px;
+  }
+
+  .section-title {
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+
+  .size-input-section {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .input-label {
+    font-size: 12px;
+  }
+
+  .modal-product-image-container {
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+
+  .preview-section {
+    margin-bottom: 16px;
+  }
+
+  .calculation-section,
+  .pricing-section {
+    padding: 12px;
+    margin-bottom: 12px;
+  }
+
+  .calculation-title,
+  .pricing-title {
+    font-size: 15px;
+  }
+
+  .calc-label,
+  .price-label {
+    font-size: 13px;
+  }
+
+  .calc-value,
+  .price-amount {
+    font-size: 14px;
+  }
+
+  .price-amount.total-amount {
+    font-size: 18px;
+  }
+
+  .components-note,
+  .pricing-note,
+  .order-note {
+    font-size: 11px;
+  }
+
+  .modal-actions-customize {
+    padding-top: 16px;
+    margin-top: 0;
   }
 }
 
