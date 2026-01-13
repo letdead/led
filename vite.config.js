@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   server: {
-    host: '0.0.0.0', // This allows Render to detect the port
-    port: 5173,      // You can keep the default Vite port
+    host: '0.0.0.0',
+    allowedHosts: true // This will allow any host to connect
   }
 })
