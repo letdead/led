@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useScroll } from '../../../hooks/useScroll';
 import Button from '../../ui/Button';
@@ -9,8 +10,23 @@ const Header = () => {
   const scrolled = useScroll(SCROLL_THRESHOLD);
   const navigate = useNavigate();
   const location = useLocation();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    // Prevent body scroll when mobile menu is open
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [mobileMenuOpen]);
 
   const handleNavClick = (e, sectionId) => {
+    setMobileMenuOpen(false);
     if (location.pathname !== '/') {
       // If not on home, go home first, then scroll
       navigate('/');
@@ -22,15 +38,31 @@ const Header = () => {
     }
   };
 
+  const handleLinkClick = () => {
+    setMobileMenuOpen(false);
+  };
+
   return (
     <header className={`header ${scrolled ? 'scrolled' : ''}`}>
       <nav className="nav">
         <div className="nav-container">
           {/* Logo now clicks back to Home */}
-          <Link to="/" className="logo">{UI_TEXT.HEADER.LOGO}</Link>
+          <Link to="/" className="logo" onClick={handleLinkClick}>{UI_TEXT.HEADER.LOGO}</Link>
           
-          <div className="nav-links">
-            <Link to="/">Home</Link>
+          <button 
+            className="mobile-menu-toggle"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            <span className={`hamburger ${mobileMenuOpen ? 'active' : ''}`}>
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+          </button>
+          
+          <div className={`nav-links ${mobileMenuOpen ? 'mobile-open' : ''}`}>
+            <Link to="/" onClick={handleLinkClick}>Home</Link>
 
             <a 
               href={`/#${SECTION_IDS.PRODUCTS}`} 
@@ -39,7 +71,7 @@ const Header = () => {
               {UI_TEXT.HEADER.NAV.PRODUCTS}
             </a>
             
-            <Link to="/support">{UI_TEXT.HEADER.NAV.SUPPORT}</Link>
+            <Link to="/support" onClick={handleLinkClick}>{UI_TEXT.HEADER.NAV.SUPPORT}</Link>
 
             <Button variant="primary" size="small" onClick={(e) => handleNavClick(e, SECTION_IDS.PRODUCTS)}>
               {UI_TEXT.HEADER.NAV.SHOP}
